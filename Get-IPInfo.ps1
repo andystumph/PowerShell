@@ -11,6 +11,8 @@
     Author: Andy Stumph
     DateCreated: 10-7-2016
 
+    Script only works against Windows Server 2012 or newer OS.
+
 .EXAMPLE
     Get-IPInfo -computer ServerName
 .EXAMPLE
@@ -27,8 +29,8 @@
         [string]$Computer
         )
 
-$Option = New-CimSessionOption -Protocol Dcom
-$Session = New-CimSession -SessionOption $Option -ComputerName $Computer
+#$Option = New-CimSessionOption -Protocol Dcom
+$Session = New-CimSession -ComputerName $Computer
 
 Get-NetIPAddress -CimSession $Session -AddressFamily IPv4
 
