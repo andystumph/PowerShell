@@ -21,7 +21,7 @@
 
     Param(
     [Parameter(Mandatory = $False, Position = 0, ValueFromPipeline = $True)]
-    [string]$Computer = 'localhost'
+    [string[]]$Computer = 'localhost'
     )
 
 $Output = @()
@@ -29,7 +29,7 @@ $Output = @()
 $Option = New-CimSessionOption -Protocol Dcom
 $Session = New-CimSession -SessionOption $Option -ComputerName $Computer
 
-$LogicalDisks = Get-CimInstance -CimSession $Session -ClassName Win32_LogicalDisk`
+$LogicalDisks = Get-CimInstance -CimSession $Session -ClassName Win32_LogicalDisk
 
 foreach ($LogicalDisk in $LogicalDisks) {
 
@@ -46,6 +46,7 @@ foreach ($LogicalDisk in $LogicalDisks) {
 
      $Disk = [pscustomobject]@{
         
+        Computer = $LogicalDisk.PSComputerName
         "Device ID" = $LogicalDisk.DeviceID
         Type = $Type
         "Size (MB)" = "{0:N0}" -f $($LogicalDisk.Size / 1MB)
