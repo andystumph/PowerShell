@@ -49,6 +49,7 @@ foreach ($LogicalDisk in $LogicalDisks) {
         Computer = $LogicalDisk.PSComputerName
         "Device ID" = $LogicalDisk.DeviceID
         Type = $Type
+        "Volume Name" = "{0:N0}" -f $LogicalDisk.VolumeName
         "Size (MB)" = "{0:N0}" -f $($LogicalDisk.Size / 1MB)
         "Free Space (MB)" = "{0:N0}" -f $($LogicalDisk.FreeSpace / 1MB)
         "Percent Free" = "{0:P0}" -f $FreeSpacePercent
