@@ -1,9 +1,9 @@
     
 <#  
 .SYNOPSIS  
-    Retrieves Disk and space information from  a computer.
+    Retrieves Disk and space information from a computer.
 .DESCRIPTION
-    Retrieves Disk and space information from  a computer.
+    Retrieves Disk and space information from a computer.
 .PARAMETER computer
     Name of computer to get disk information on.
 .NOTES  
@@ -11,7 +11,7 @@
     Author: Andy Stumph
     DateCreated: 7-5-2015
 .EXAMPLE
-    .\Get-DiskSize.ps1 -computer ServerName
+    .\Get-DiskSize.ps1 -Computer ServerName
 
 #> 
 
@@ -47,7 +47,7 @@ foreach ($LogicalDisk in $LogicalDisks) {
      $Disk = [pscustomobject]@{
         
         Computer = $LogicalDisk.PSComputerName
-        "Device ID" = $LogicalDisk.DeviceID
+        "Device_ID" = $LogicalDisk.DeviceID
         Type = $Type
         "Volume Name" = "{0:N0}" -f $LogicalDisk.VolumeName
         "Size (MB)" = "{0:N0}" -f $($LogicalDisk.Size / 1MB)
