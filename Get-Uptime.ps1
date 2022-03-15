@@ -38,4 +38,8 @@ $Uptime = $OS.LocalDateTime - $OS.LastBootUpTime
 #$Uptime = [Timespan]::FromMilliseconds($Millisec)
 
 $Uptime
+
+Write-Host "Last Boot Time:" -ForegroundColor Green
+((Get-Date).AddMilliseconds(-($Uptime.TotalMilliseconds))).DateTime
+
 #Write-Host -ForegroundColor Green "$Computer has been up for $($Uptime.Days) Days $($Uptime.Hours) Hours $($Uptime.Minutes) Minutes"
