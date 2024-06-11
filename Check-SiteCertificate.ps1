@@ -6,7 +6,7 @@
 param (
     [ValidateNotNullOrEmpty()]
     [System.String]
-    $URI = "https://hchb.com",
+    $URI = "https://www.microsoft.com",
 
     [ValidateNotNullOrEmpty()]
     [Int32]
